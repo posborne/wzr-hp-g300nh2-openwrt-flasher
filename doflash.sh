@@ -25,6 +25,10 @@ function setup_networking() {
     arp -s 192.168.11.1 $MAC_ADDRESS
 }
 
+function teardown_networking() {
+    arp -d 192.168.11.1
+}
+
 function attempt_flash() {
     echo "Plugin router and hit enter (or vice versa)"
     read input
@@ -39,3 +43,5 @@ function attempt_flash() {
 
 setup_networking
 attempt_flash
+teardown_networking
+
